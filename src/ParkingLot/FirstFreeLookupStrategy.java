@@ -5,7 +5,11 @@ import java.util.List;
 public class FirstFreeLookupStrategy implements ParkingSpotLookStrategy{
 
     public ParkingSpot findSpot(List<ParkingSpot> parkingSpotList) {
-        int randomIndex = (int) (Math.random() * parkingSpotList.size());
-        return parkingSpotList.get(randomIndex);
+        for(ParkingSpot spot: parkingSpotList) {
+            if(spot.isFree) {
+                return spot;
+            }
+        }
+        return null;
     }
 }
